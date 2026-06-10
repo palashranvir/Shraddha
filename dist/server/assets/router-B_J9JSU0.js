@@ -1,0 +1,173 @@
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { createRootRouteWithContext, useRouter, Link, Outlet, HeadContent, Scripts, createFileRoute, lazyRouteComponent, createRouter } from "@tanstack/react-router";
+import { jsx, jsxs } from "react/jsx-runtime";
+const appCss = "/assets/styles-9IVRVuhy.css";
+function NotFoundComponent() {
+  return /* @__PURE__ */ jsx("div", { className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxs("div", { className: "max-w-md text-center", children: [
+    /* @__PURE__ */ jsx("h1", { className: "text-7xl font-bold text-foreground", children: "404" }),
+    /* @__PURE__ */ jsx("h2", { className: "mt-4 text-xl font-semibold text-foreground", children: "Page not found" }),
+    /* @__PURE__ */ jsx("p", { className: "mt-2 text-sm text-muted-foreground", children: "The page you're looking for doesn't exist." }),
+    /* @__PURE__ */ jsx("div", { className: "mt-6", children: /* @__PURE__ */ jsx(
+      Link,
+      {
+        to: "/",
+        className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
+        children: "Go home"
+      }
+    ) })
+  ] }) });
+}
+function ErrorComponent({ error, reset }) {
+  console.error(error);
+  const router = useRouter();
+  return /* @__PURE__ */ jsx("div", { className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxs("div", { className: "max-w-md text-center", children: [
+    /* @__PURE__ */ jsx("h1", { className: "text-xl font-semibold tracking-tight text-foreground", children: "This page didn't load" }),
+    /* @__PURE__ */ jsx("p", { className: "mt-2 text-sm text-muted-foreground", children: "Please try refreshing or head back home." }),
+    /* @__PURE__ */ jsxs("div", { className: "mt-6 flex flex-wrap justify-center gap-2", children: [
+      /* @__PURE__ */ jsx(
+        "button",
+        {
+          onClick: () => {
+            router.invalidate();
+            reset();
+          },
+          className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
+          children: "Try again"
+        }
+      ),
+      /* @__PURE__ */ jsx(
+        "a",
+        {
+          href: "/",
+          className: "inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent",
+          children: "Go home"
+        }
+      )
+    ] })
+  ] }) });
+}
+const Route$1 = createRootRouteWithContext()(
+  {
+    head: () => ({
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          title: "Shraddha Care Taker Nursing & Maid Services — Patient Care at Home, Nagpur"
+        },
+        {
+          name: "description",
+          content: "Premium 24-hour nursing, elderly care, baby care and maid services at home in Nagpur. Trained ANM/GNM sisters, ward boys, attendants and maids."
+        },
+        { name: "author", content: "Shraddha Care Taker" },
+        {
+          property: "og:title",
+          content: "Shraddha Care Taker Nursing & Maid Services"
+        },
+        {
+          property: "og:description",
+          content: "24-hour trusted patient care at home in Nagpur."
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "Shraddha Care Taker" },
+        { property: "og:image", content: "/og-image.jpg" },
+        {
+          property: "og:image:alt",
+          content: "Shraddha Care Taker nursing and elderly care at home"
+        },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: "Shraddha Care Taker Nursing & Maid Services"
+        },
+        {
+          name: "twitter:description",
+          content: "24-hour trusted patient care at home in Nagpur."
+        },
+        { name: "twitter:image", content: "/og-image.jpg" }
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous"
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        }
+      ]
+    }),
+    shellComponent: RootShell,
+    component: RootComponent,
+    notFoundComponent: NotFoundComponent,
+    errorComponent: ErrorComponent
+  }
+);
+function RootShell({ children }) {
+  return /* @__PURE__ */ jsxs("html", { lang: "en", children: [
+    /* @__PURE__ */ jsx("head", { children: /* @__PURE__ */ jsx(HeadContent, {}) }),
+    /* @__PURE__ */ jsxs("body", { children: [
+      children,
+      /* @__PURE__ */ jsx(Scripts, {})
+    ] })
+  ] });
+}
+function RootComponent() {
+  const { queryClient } = Route$1.useRouteContext();
+  return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(Outlet, {}) });
+}
+const $$splitComponentImporter = () => import("./index-CAmfQFJF.js");
+const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [{
+      title: "Shraddha Care Taker — Premium Nursing & Maid Services in Nagpur"
+    }, {
+      name: "description",
+      content: "Trusted 24-hour nursing, elderly care, baby care and maid services at home in Nagpur. Trained ANM/GNM sisters, ward boys, attendants and maids."
+    }, {
+      property: "og:title",
+      content: "Shraddha Care Taker Nursing & Maid Services"
+    }, {
+      property: "og:description",
+      content: "Patient Care at Home — 24 Hours. Nagpur."
+    }, {
+      property: "og:image",
+      content: "/og-image.jpg"
+    }, {
+      property: "og:image:alt",
+      content: "Shraddha Care Taker nursing and elderly care at home"
+    }, {
+      name: "twitter:card",
+      content: "summary_large_image"
+    }, {
+      name: "twitter:image",
+      content: "/og-image.jpg"
+    }]
+  }),
+  component: lazyRouteComponent($$splitComponentImporter, "component")
+});
+const IndexRoute = Route.update({
+  id: "/",
+  path: "/",
+  getParentRoute: () => Route$1
+});
+const rootRouteChildren = {
+  IndexRoute
+};
+const routeTree = Route$1._addFileChildren(rootRouteChildren)._addFileTypes();
+const getRouter = () => {
+  const queryClient = new QueryClient();
+  const router = createRouter({
+    routeTree,
+    context: { queryClient },
+    scrollRestoration: true,
+    defaultPreloadStaleTime: 0
+  });
+  return router;
+};
+export {
+  getRouter
+};

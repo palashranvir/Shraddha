@@ -96,12 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         { property: "og:type", content: "website" },
         { property: "og:site_name", content: "Shraddha Care Taker" },
-        { property: "og:image", content: "/og-image.jpg" },
-        {
-          property: "og:image:alt",
-          content: "Shraddha Care Taker nursing and elderly care at home",
-        },
-        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:card", content: "summary" },
         {
           name: "twitter:title",
           content: "Shraddha Care Taker Nursing & Maid Services",
@@ -110,10 +105,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "twitter:description",
           content: "24-hour trusted patient care at home in Nagpur.",
         },
-        { name: "twitter:image", content: "/og-image.jpg" },
       ],
       links: [
         { rel: "stylesheet", href: appCss },
+        { rel: "icon", href: "data:," },
+        { rel: "shortcut icon", href: "data:," },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",

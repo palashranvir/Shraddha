@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Required for self-hosted deploys (outside Lovable sandbox) so SSR output is produced.
+  // Without this, the wrapper skips nitro and Vercel receives only dist/* static assets.
+  nitro: {
+    preset: "vercel",
+  },
 });

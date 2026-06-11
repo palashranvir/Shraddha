@@ -42,13 +42,6 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Patient Care at Home — 24 Hours. Nagpur.",
       },
-      { property: "og:image", content: "/og-image.jpg" },
-      {
-        property: "og:image:alt",
-        content: "Shraddha Care Taker nursing and elderly care at home",
-      },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-image.jpg" },
     ],
   }),
   component: Home,

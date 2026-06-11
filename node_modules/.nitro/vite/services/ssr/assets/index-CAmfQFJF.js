@@ -1,0 +1,490 @@
+import { jsxs, jsx } from "react/jsx-runtime";
+import { useEffect, useState } from "react";
+import { Phone, ArrowRight, ShieldCheck, Clock, Heart, Sparkles, Stethoscope, Baby, UserRound, Quote, MapPin, Mail } from "lucide-react";
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("reveal-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+const consultation = "/assets/consultation-CuLV9_Zm.jpg";
+const elderlyCare = "/assets/elderly-care-2gsn5FW3.jpg";
+const walkerCare = "/assets/walker-care-CwtxhSK7.jpg";
+const wheelchair = "/assets/wheelchair-care-DfB8rNnc.jpg";
+const community = "/assets/community-D7vpV78C.jpg";
+const PHONE = "+91 90679 24183";
+const PHONE_DIGITS = "919067924183";
+const WHATSAPP_BASE = `https://wa.me/${PHONE_DIGITS}`;
+const ADDRESS = "Pallavi Apartment 1, Shantiniketan Colony, Kotwal Nagar, Pratap Nagar, Nagpur 440022";
+function Home() {
+  useReveal();
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, {
+      passive: true
+    });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return /* @__PURE__ */ jsxs("div", { className: "min-h-screen bg-background text-foreground", children: [
+    /* @__PURE__ */ jsx(Nav, { scrolled }),
+    /* @__PURE__ */ jsx(Hero, {}),
+    /* @__PURE__ */ jsx(Marquee, {}),
+    /* @__PURE__ */ jsx(About, {}),
+    /* @__PURE__ */ jsx(Services, {}),
+    /* @__PURE__ */ jsx(Gallery, {}),
+    /* @__PURE__ */ jsx(Why, {}),
+    /* @__PURE__ */ jsx(Testimonials, {}),
+    /* @__PURE__ */ jsx(Contact, {}),
+    /* @__PURE__ */ jsx(Footer, {}),
+    /* @__PURE__ */ jsx(FloatingWhatsApp, {})
+  ] });
+}
+function FloatingWhatsApp() {
+  return /* @__PURE__ */ jsxs("a", { href: WHATSAPP_BASE, target: "_blank", rel: "noopener noreferrer", "aria-label": "Chat on WhatsApp", className: "fixed bottom-6 right-6 z-50 group", children: [
+    /* @__PURE__ */ jsx("span", { className: "absolute inset-0 rounded-full bg-[#25D366] opacity-60 animate-ping" }),
+    /* @__PURE__ */ jsx("span", { className: "relative grid place-items-center h-14 w-14 rounded-full bg-[#25D366] text-white shadow-[0_15px_40px_-10px_rgba(37,211,102,0.7)] border-2 border-white/30 transition-transform group-hover:scale-110", children: /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className: "h-7 w-7", fill: "currentColor", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M20.52 3.48A11.85 11.85 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.34-1.66a11.86 11.86 0 0 0 5.72 1.46h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.17-1.23-6.16-3.43-8.43zM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.76.99 1-3.66-.23-.38a9.86 9.86 0 0 1-1.51-5.27c0-5.46 4.44-9.9 9.91-9.9 2.65 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 7c0 5.46-4.44 9.9-9.9 9.9zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z" }) }) })
+  ] });
+}
+function Nav({
+  scrolled
+}) {
+  return /* @__PURE__ */ jsx("header", { className: `fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "backdrop-blur-xl bg-background/80 border-b border-border/60 py-3" : "bg-transparent py-5"}`, children: /* @__PURE__ */ jsxs("div", { className: "container-luxe flex items-center justify-between", children: [
+    /* @__PURE__ */ jsxs("a", { href: "#top", className: "flex items-center gap-3 group", children: [
+      /* @__PURE__ */ jsx("span", { className: "h-10 w-10 rounded-full bg-primary text-primary-foreground grid place-items-center font-display text-xl border border-gold/40", children: "S" }),
+      /* @__PURE__ */ jsxs("span", { className: "flex flex-col leading-tight", children: [
+        /* @__PURE__ */ jsx("span", { className: "font-display text-lg text-primary", children: "Shraddha" }),
+        /* @__PURE__ */ jsx("span", { className: "text-[10px] tracking-[0.25em] uppercase text-muted-foreground", children: "Care · Nagpur" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx("nav", { className: "hidden md:flex items-center gap-9 text-sm", children: [["About", "#about"], ["Services", "#services"], ["Gallery", "#gallery"], ["Why Us", "#why"], ["Contact", "#contact"]].map(([label, href]) => /* @__PURE__ */ jsx("a", { href, className: "relative text-foreground/80 hover:text-foreground transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full", children: label }, label)) }),
+    /* @__PURE__ */ jsxs("a", { href: `tel:${PHONE.replace(/\s/g, "")}`, className: "hidden md:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm border border-gold/30 hover:bg-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_var(--gold)]", children: [
+      /* @__PURE__ */ jsx(Phone, { className: "h-4 w-4 text-gold" }),
+      "Call 24×7"
+    ] })
+  ] }) });
+}
+function Hero() {
+  const stats = [["7+", "Years of Experience"], ["24×7", "Service"], ["ANM/GNM", "Sisters"], ["Nagpur", "Citywide"]];
+  return /* @__PURE__ */ jsxs("section", { id: "top", className: "relative min-h-screen flex items-center pt-28 overflow-hidden hero-aura", children: [
+    /* @__PURE__ */ jsx("div", { className: "absolute inset-0 noise-bg" }),
+    /* @__PURE__ */ jsx("div", { className: "absolute -top-32 -right-32 h-[42rem] w-[42rem] rounded-full opacity-30 blur-3xl animate-float-soft", style: {
+      background: "radial-gradient(circle, var(--gold) 0%, transparent 60%)"
+    } }),
+    /* @__PURE__ */ jsxs("div", { className: "container-luxe relative grid lg:grid-cols-12 gap-10 items-center", children: [
+      /* @__PURE__ */ jsxs("div", { className: "lg:col-span-7 space-y-7 reveal reveal-slide-right", children: [
+        /* @__PURE__ */ jsxs("span", { className: "inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-muted-foreground", children: [
+          /* @__PURE__ */ jsx("span", { className: "h-px w-10 bg-gold" }),
+          "Patient Care at Home · 7 Years of Trust"
+        ] }),
+        /* @__PURE__ */ jsxs("h1", { className: "text-5xl sm:text-6xl lg:text-7xl font-medium leading-[1.02] text-primary", children: [
+          "Compassionate care, ",
+          /* @__PURE__ */ jsx("br", {}),
+          "crafted with",
+          " ",
+          /* @__PURE__ */ jsx("span", { className: "text-gradient-gold italic", children: "grace" }),
+          "."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "text-lg text-muted-foreground max-w-xl leading-relaxed", children: "Shraddha Care Taker Nursing & Maid Services delivers 24-hour trained nursing, elderly assistance, baby care and household help — with the warmth of family and the discipline of a hospital." }),
+        /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap items-center gap-4 pt-2", children: [
+          /* @__PURE__ */ jsxs("a", { href: "#contact", className: "group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3.5 text-sm tracking-wide border border-gold/30 transition-all hover:-translate-y-0.5 hover:shadow-[0_15px_40px_-15px_var(--gold)]", children: [
+            "Book a Caregiver",
+            /* @__PURE__ */ jsx(ArrowRight, { className: "h-4 w-4 transition-transform group-hover:translate-x-1" })
+          ] }),
+          /* @__PURE__ */ jsxs("a", { href: `tel:${PHONE.replace(/\s/g, "")}`, className: "inline-flex items-center gap-2 text-sm text-primary hover:text-gold transition-colors", children: [
+            /* @__PURE__ */ jsx(Phone, { className: "h-4 w-4" }),
+            PHONE
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 pt-8 max-w-2xl", children: stats.map(([a, b], i) => /* @__PURE__ */ jsxs("div", { className: "reveal reveal-scale hero-stat group/stat", style: {
+          transitionDelay: `${220 + i * 90}ms`
+        }, children: [
+          /* @__PURE__ */ jsx("div", { className: "font-display text-2xl text-primary leading-tight", children: a }),
+          /* @__PURE__ */ jsx("div", { className: "text-[11px] tracking-[0.15em] uppercase text-muted-foreground mt-1 leading-snug", children: b })
+        ] }, a)) })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "lg:col-span-5 relative reveal reveal-slide-left pb-12 lg:pb-16", children: [
+        /* @__PURE__ */ jsxs("div", { className: "hero-visual-card group/image relative aspect-[4/5] rounded-3xl overflow-hidden border border-gold/30 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)]", children: [
+          /* @__PURE__ */ jsx("img", { src: wheelchair, alt: "Trained caregiver assisting a senior at home", className: "h-full w-full object-cover transition-transform duration-[1500ms] group-hover/image:scale-105" }),
+          /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "absolute bottom-0 left-4 sm:left-6 z-10 hidden sm:flex items-center gap-3 rounded-2xl bg-card/95 backdrop-blur px-5 py-4 border border-gold/40 shadow-xl animate-float-soft hover-lift", children: [
+          /* @__PURE__ */ jsx(ShieldCheck, { className: "h-8 w-8 text-gold shrink-0" }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "text-sm font-medium text-primary", children: "Verified Caregivers" }),
+            /* @__PURE__ */ jsx("div", { className: "text-xs text-muted-foreground", children: "Background-checked & trained" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "absolute -top-4 right-2 sm:right-4 z-10 hidden sm:flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-xs border border-gold/40 shadow-lg hover-lift", children: [
+          /* @__PURE__ */ jsx(Clock, { className: "h-4 w-4 text-gold" }),
+          "24 Hours"
+        ] })
+      ] })
+    ] })
+  ] });
+}
+function Marquee() {
+  const items = ["Nursing Services", "Baby Care", "Baby Sitting", "Old Age Care", "Sr. Citizen Care", "ANM Sister", "GNM Sister", "Ward Boy", "Attendant", "Maid Available"];
+  return /* @__PURE__ */ jsx("div", { className: "border-y border-border/60 bg-primary text-primary-foreground overflow-hidden", children: /* @__PURE__ */ jsx("div", { className: "flex animate-marquee whitespace-nowrap py-5", children: [...items, ...items].map((it, i) => /* @__PURE__ */ jsxs("span", { className: "mx-10 inline-flex items-center gap-4 font-display text-xl", children: [
+    it,
+    /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-gold" })
+  ] }, i)) }) });
+}
+function About() {
+  return /* @__PURE__ */ jsx("section", { id: "about", className: "py-28 lg:py-36", children: /* @__PURE__ */ jsxs("div", { className: "container-luxe grid lg:grid-cols-2 gap-16 items-center", children: [
+    /* @__PURE__ */ jsxs("div", { className: "relative reveal", children: [
+      /* @__PURE__ */ jsx("img", { src: consultation, alt: "Caregiver in consultation with patient", className: "rounded-3xl w-full aspect-[4/3] object-cover border border-border/60" }),
+      /* @__PURE__ */ jsx("img", { src: elderlyCare, alt: "Caregiver with elderly woman", className: "hidden sm:block absolute -bottom-12 -right-6 w-56 aspect-[3/4] object-cover rounded-2xl border-4 border-background shadow-xl" })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "reveal space-y-6", children: [
+      /* @__PURE__ */ jsx("span", { className: "text-xs tracking-[0.3em] uppercase text-gold", children: "About Us" }),
+      /* @__PURE__ */ jsxs("h2", { className: "text-4xl lg:text-5xl text-primary leading-tight", children: [
+        "Twenty-four hours of",
+        " ",
+        /* @__PURE__ */ jsx("em", { className: "text-gradient-gold not-italic", children: "unwavering" }),
+        " care, at your doorstep."
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "gold-line w-24" }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted-foreground leading-relaxed", children: [
+        "For over ",
+        /* @__PURE__ */ jsx("span", { className: "text-primary font-medium", children: "7 years" }),
+        ", Shraddha Care Taker Nursing & Maid Services has been Nagpur's trusted home-care studio — built on a simple belief that every patient deserves the dignity of being cared for at home. Our trained sisters, attendants and maids bring clinical precision and personal warmth into the place that matters most."
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted-foreground leading-relaxed", children: "From new-born baby sitting to senior-citizen companionship and post-surgery recovery, we tailor each placement around the family — never the other way around." }),
+      /* @__PURE__ */ jsx("div", { className: "grid grid-cols-2 gap-6 pt-4", children: [{
+        icon: ShieldCheck,
+        t: "Trained & Verified"
+      }, {
+        icon: Clock,
+        t: "24×7 Availability"
+      }, {
+        icon: Heart,
+        t: "Patient-First Approach"
+      }, {
+        icon: Sparkles,
+        t: "Discreet & Hygienic"
+      }].map(({
+        icon: Icon,
+        t
+      }) => /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ jsx("span", { className: "h-10 w-10 grid place-items-center rounded-full bg-secondary border border-gold/30", children: /* @__PURE__ */ jsx(Icon, { className: "h-5 w-5 text-gold" }) }),
+        /* @__PURE__ */ jsx("span", { className: "text-sm text-primary", children: t })
+      ] }, t)) })
+    ] })
+  ] }) });
+}
+const SERVICES = [{
+  icon: Stethoscope,
+  title: "Nursing Services",
+  desc: "Trained ANM & GNM sisters for medications, wound dressing, vitals monitoring, post-operative care and chronic-illness support."
+}, {
+  icon: Heart,
+  title: "Old Age & Sr. Citizen Care",
+  desc: "Patient, gentle companionship plus daily-living assistance — bathing, feeding, mobility and medication reminders."
+}, {
+  icon: Baby,
+  title: "Baby Care & Baby Sitting",
+  desc: "Loving, hygienic care for infants and toddlers by experienced caregivers — day, night or full-time."
+}, {
+  icon: UserRound,
+  title: "Ward Boys & Attendants",
+  desc: "Reliable hospital and home attendants for lifting, shifting, hygiene and continuous bedside support."
+}, {
+  icon: Sparkles,
+  title: "Maid Services",
+  desc: "Trustworthy, background-checked maids for cooking, cleaning and household management."
+}, {
+  icon: ShieldCheck,
+  title: "Post-Surgery Recovery",
+  desc: "Structured at-home recovery plans with periodic check-ins, physiotherapy coordination and family briefings."
+}];
+function Services() {
+  return /* @__PURE__ */ jsxs("section", { id: "services", className: "py-28 lg:py-36 bg-secondary/40 relative overflow-hidden", children: [
+    /* @__PURE__ */ jsx("div", { className: "absolute inset-x-0 top-0 h-px gold-line" }),
+    /* @__PURE__ */ jsxs("div", { className: "container-luxe", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-2xl mb-16 reveal", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-xs tracking-[0.3em] uppercase text-gold", children: "Our Services" }),
+        /* @__PURE__ */ jsxs("h2", { className: "mt-3 text-4xl lg:text-5xl text-primary leading-tight", children: [
+          "Every form of care,",
+          " ",
+          /* @__PURE__ */ jsx("em", { className: "text-gradient-gold not-italic", children: "under one roof" }),
+          "."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6", children: SERVICES.map(({
+        icon: Icon,
+        title,
+        desc
+      }, i) => /* @__PURE__ */ jsxs("article", { className: "reveal group relative rounded-2xl bg-card border border-border p-8 transition-all duration-500 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.25)]", style: {
+        transitionDelay: `${i * 60}ms`
+      }, children: [
+        /* @__PURE__ */ jsx("div", { className: "absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity" }),
+        /* @__PURE__ */ jsx("span", { className: "inline-grid h-14 w-14 place-items-center rounded-xl bg-primary text-primary-foreground border border-gold/40 mb-6 transition-transform group-hover:scale-110 group-hover:rotate-3", children: /* @__PURE__ */ jsx(Icon, { className: "h-6 w-6 text-gold" }) }),
+        /* @__PURE__ */ jsx("h3", { className: "text-2xl text-primary mb-3", children: title }),
+        /* @__PURE__ */ jsx("p", { className: "text-sm text-muted-foreground leading-relaxed", children: desc }),
+        /* @__PURE__ */ jsxs("div", { className: "mt-6 inline-flex items-center gap-2 text-xs tracking-widest uppercase text-gold opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all", children: [
+          "Enquire ",
+          /* @__PURE__ */ jsx(ArrowRight, { className: "h-3.5 w-3.5" })
+        ] })
+      ] }, title)) })
+    ] })
+  ] });
+}
+function Gallery() {
+  const items = [{
+    src: walkerCare,
+    alt: "Caregiver helping senior with walker",
+    span: "lg:col-span-2 lg:row-span-2"
+  }, {
+    src: elderlyCare,
+    alt: "Caregiver smiling with elderly woman",
+    span: ""
+  }, {
+    src: community,
+    alt: "Senior community gathering",
+    span: ""
+  }, {
+    src: consultation,
+    alt: "Caregiver consulting patient",
+    span: "lg:col-span-2"
+  }];
+  return /* @__PURE__ */ jsx("section", { id: "gallery", className: "py-28 lg:py-36", children: /* @__PURE__ */ jsxs("div", { className: "container-luxe", children: [
+    /* @__PURE__ */ jsxs("div", { className: "flex items-end justify-between flex-wrap gap-6 mb-14 reveal", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-xl", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-xs tracking-[0.3em] uppercase text-gold", children: "Moments of Care" }),
+        /* @__PURE__ */ jsxs("h2", { className: "mt-3 text-4xl lg:text-5xl text-primary leading-tight", children: [
+          "Quiet dignity,",
+          " ",
+          /* @__PURE__ */ jsx("em", { className: "text-gradient-gold not-italic", children: "captured daily" }),
+          "."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "gold-line w-32" })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "grid grid-cols-2 lg:grid-cols-4 auto-rows-[14rem] gap-4", children: items.map((it, i) => /* @__PURE__ */ jsxs("figure", { className: `reveal reveal-scale gallery-card relative overflow-hidden rounded-2xl border border-border group ${it.span}`, style: {
+      transitionDelay: `${i * 80}ms`
+    }, children: [
+      /* @__PURE__ */ jsx("img", { src: it.src, alt: it.alt, className: "h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110" }),
+      /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5", children: /* @__PURE__ */ jsx("span", { className: "gallery-caption text-xs tracking-widest uppercase text-primary-foreground", children: it.alt }) })
+    ] }, i)) })
+  ] }) });
+}
+function Why() {
+  const items = [{
+    n: "01",
+    t: "Hand-picked caregivers",
+    d: "Every sister, attendant and maid is interviewed, verified and trained before placement."
+  }, {
+    n: "02",
+    t: "Round-the-clock support",
+    d: "Our coordinators are reachable 24 hours a day for replacements, escalations or guidance."
+  }, {
+    n: "03",
+    t: "Tailored to your family",
+    d: "Care plans are built around the patient's routine, diet, faith and personal preferences."
+  }, {
+    n: "04",
+    t: "Transparent & local",
+    d: "Proudly based in Nagpur with clear pricing and no hidden fees — ever."
+  }];
+  return /* @__PURE__ */ jsxs("section", { id: "why", className: "py-28 lg:py-36 bg-primary text-primary-foreground relative overflow-hidden", children: [
+    /* @__PURE__ */ jsx("div", { className: "absolute inset-0 opacity-20", style: {
+      backgroundImage: "radial-gradient(circle at 20% 20%, var(--gold) 0, transparent 35%), radial-gradient(circle at 80% 80%, var(--gold) 0, transparent 35%)"
+    } }),
+    /* @__PURE__ */ jsxs("div", { className: "container-luxe relative", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-2xl mb-16 reveal", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-xs tracking-[0.3em] uppercase text-gold", children: "Why Shraddha" }),
+        /* @__PURE__ */ jsxs("h2", { className: "mt-3 text-4xl lg:text-5xl leading-tight", children: [
+          "A standard of care families",
+          " ",
+          /* @__PURE__ */ jsx("em", { className: "text-gradient-gold not-italic", children: "remember" }),
+          "."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-x-12 gap-y-10", children: items.map(({
+        n,
+        t,
+        d
+      }, i) => /* @__PURE__ */ jsxs("div", { className: "reveal flex gap-6 border-t border-gold/30 pt-8", style: {
+        transitionDelay: `${i * 80}ms`
+      }, children: [
+        /* @__PURE__ */ jsx("span", { className: "font-display text-3xl text-gold", children: n }),
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("h3", { className: "text-xl mb-2", children: t }),
+          /* @__PURE__ */ jsx("p", { className: "text-sm text-primary-foreground/70 leading-relaxed", children: d })
+        ] })
+      ] }, n)) })
+    ] })
+  ] });
+}
+function Testimonials() {
+  const quotes = [{
+    q: "The sister Shraddha sent for my father was punctual, gentle and remarkably skilled. We finally slept peacefully.",
+    a: "— Mrs. Deshpande, Dharampeth"
+  }, {
+    q: "From the very first call, everything felt organised and warm. Their maid has become part of our home.",
+    a: "— Kulkarni Family, Pratap Nagar"
+  }, {
+    q: "Post-operative care for my mother was handled with such dignity. Truly grateful for the team.",
+    a: "— Dr. Sharma, Civil Lines"
+  }];
+  return /* @__PURE__ */ jsx("section", { className: "py-28 lg:py-36", children: /* @__PURE__ */ jsxs("div", { className: "container-luxe", children: [
+    /* @__PURE__ */ jsxs("div", { className: "max-w-2xl mb-14 reveal", children: [
+      /* @__PURE__ */ jsx("span", { className: "text-xs tracking-[0.3em] uppercase text-gold", children: "Kind Words" }),
+      /* @__PURE__ */ jsxs("h2", { className: "mt-3 text-4xl lg:text-5xl text-primary leading-tight", children: [
+        "Stories from the families",
+        " ",
+        /* @__PURE__ */ jsx("em", { className: "text-gradient-gold not-italic", children: "we serve" }),
+        "."
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-3 gap-6", children: quotes.map((t, i) => /* @__PURE__ */ jsxs("blockquote", { className: "reveal relative rounded-2xl border border-border bg-card p-8 hover:border-gold/50 transition-colors", style: {
+      transitionDelay: `${i * 80}ms`
+    }, children: [
+      /* @__PURE__ */ jsx(Quote, { className: "h-8 w-8 text-gold mb-4" }),
+      /* @__PURE__ */ jsxs("p", { className: "text-primary leading-relaxed font-display text-lg", children: [
+        '"',
+        t.q,
+        '"'
+      ] }),
+      /* @__PURE__ */ jsx("footer", { className: "mt-6 text-xs tracking-widest uppercase text-muted-foreground", children: t.a })
+    ] }, i)) })
+  ] }) });
+}
+function Contact() {
+  return /* @__PURE__ */ jsx("section", { id: "contact", className: "py-28 lg:py-36 bg-secondary/50 relative", children: /* @__PURE__ */ jsxs("div", { className: "container-luxe grid lg:grid-cols-2 gap-16", children: [
+    /* @__PURE__ */ jsxs("div", { className: "reveal space-y-7", children: [
+      /* @__PURE__ */ jsx("span", { className: "text-xs tracking-[0.3em] uppercase text-gold", children: "Get in Touch" }),
+      /* @__PURE__ */ jsxs("h2", { className: "text-4xl lg:text-5xl text-primary leading-tight", children: [
+        "Speak with us,",
+        " ",
+        /* @__PURE__ */ jsx("em", { className: "text-gradient-gold not-italic", children: "any hour" }),
+        "."
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted-foreground leading-relaxed max-w-md", children: "Tell us about your loved one and we'll match the right caregiver — usually within a few hours." }),
+      /* @__PURE__ */ jsxs("div", { className: "space-y-5 pt-2", children: [
+        /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-4", children: [
+          /* @__PURE__ */ jsx("span", { className: "h-11 w-11 grid place-items-center rounded-full bg-primary text-primary-foreground border border-gold/40", children: /* @__PURE__ */ jsx(Phone, { className: "h-5 w-5 text-gold" }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "text-xs tracking-widest uppercase text-muted-foreground mb-1", children: "Call 24×7" }),
+            /* @__PURE__ */ jsx("div", { className: "flex flex-col", children: /* @__PURE__ */ jsx("a", { href: `tel:${PHONE.replace(/\s/g, "")}`, className: "text-primary hover:text-gold transition-colors font-display text-xl", children: PHONE }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-4", children: [
+          /* @__PURE__ */ jsx("span", { className: "h-11 w-11 grid place-items-center rounded-full bg-primary text-primary-foreground border border-gold/40", children: /* @__PURE__ */ jsx(MapPin, { className: "h-5 w-5 text-gold" }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "text-xs tracking-widest uppercase text-muted-foreground mb-1", children: "Visit" }),
+            /* @__PURE__ */ jsx("p", { className: "text-primary max-w-xs leading-relaxed", children: ADDRESS })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-4", children: [
+          /* @__PURE__ */ jsx("span", { className: "h-11 w-11 grid place-items-center rounded-full bg-primary text-primary-foreground border border-gold/40", children: /* @__PURE__ */ jsx(Clock, { className: "h-5 w-5 text-gold" }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "text-xs tracking-widest uppercase text-muted-foreground mb-1", children: "Hours" }),
+            /* @__PURE__ */ jsx("p", { className: "text-primary", children: "Open 24 hours · 7 days a week" })
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("form", { onSubmit: (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.currentTarget);
+      const name = fd.get("name");
+      const phone = fd.get("phone");
+      const forWhom = fd.get("for");
+      const need = fd.get("need");
+      const body = encodeURIComponent(`Hello Shraddha Care Taker,
+
+Name: ${name}
+Phone: ${phone}
+Care for: ${forWhom}
+Requirement: ${need}`);
+      window.open(`${WHATSAPP_BASE}?text=${body}`, "_blank", "noopener,noreferrer");
+    }, className: "reveal rounded-3xl bg-card border border-border p-8 lg:p-10 space-y-5 shadow-xl", children: [
+      /* @__PURE__ */ jsx("h3", { className: "text-2xl text-primary font-display", children: "Request a caregiver" }),
+      /* @__PURE__ */ jsx("div", { className: "gold-line w-16" }),
+      /* @__PURE__ */ jsxs("div", { className: "grid sm:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ jsx(Field, { name: "name", label: "Your name", required: true }),
+        /* @__PURE__ */ jsx(Field, { name: "phone", label: "Phone", type: "tel", required: true })
+      ] }),
+      /* @__PURE__ */ jsx(Field, { name: "for", label: "Care needed for (e.g. mother, baby)" }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("label", { className: "text-xs tracking-widest uppercase text-muted-foreground", children: "What kind of help?" }),
+        /* @__PURE__ */ jsx("textarea", { name: "need", rows: 4, required: true, className: "mt-2 w-full rounded-xl bg-background border border-input px-4 py-3 text-sm outline-none focus:border-gold transition-colors resize-none", placeholder: "Tell us briefly about the requirement…" })
+      ] }),
+      /* @__PURE__ */ jsxs("button", { type: "submit", className: "w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-white px-7 py-3.5 text-sm tracking-wide border border-[#25D366]/40 transition-all hover:-translate-y-0.5 hover:shadow-[0_15px_40px_-15px_#25D366]", children: [
+        "Send Request on WhatsApp",
+        /* @__PURE__ */ jsx(ArrowRight, { className: "h-4 w-4" })
+      ] }),
+      /* @__PURE__ */ jsxs("p", { className: "text-xs text-muted-foreground text-center", children: [
+        "Opens WhatsApp chat with ",
+        PHONE
+      ] })
+    ] })
+  ] }) });
+}
+function Field({
+  name,
+  label,
+  type = "text",
+  required
+}) {
+  return /* @__PURE__ */ jsxs("label", { className: "block", children: [
+    /* @__PURE__ */ jsx("span", { className: "text-xs tracking-widest uppercase text-muted-foreground", children: label }),
+    /* @__PURE__ */ jsx("input", { name, type, required, className: "mt-2 w-full rounded-xl bg-background border border-input px-4 py-3 text-sm outline-none focus:border-gold transition-colors" })
+  ] });
+}
+function Footer() {
+  return /* @__PURE__ */ jsxs("footer", { className: "bg-primary text-primary-foreground py-14 border-t border-gold/30", children: [
+    /* @__PURE__ */ jsxs("div", { className: "container-luxe grid md:grid-cols-3 gap-10 items-start", children: [
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 mb-4", children: [
+          /* @__PURE__ */ jsx("span", { className: "h-10 w-10 rounded-full bg-background text-primary grid place-items-center font-display text-xl border border-gold/40", children: "S" }),
+          /* @__PURE__ */ jsx("span", { className: "font-display text-lg", children: "Shraddha Care Taker" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "text-sm text-primary-foreground/70 max-w-xs leading-relaxed", children: "Nursing & Maid Services — patient care at home, 24 hours, across Nagpur." })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("div", { className: "text-xs tracking-widest uppercase text-gold mb-3", children: "Contact" }),
+        /* @__PURE__ */ jsxs("ul", { className: "space-y-1 text-sm", children: [
+          /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("a", { href: `tel:${PHONE.replace(/\s/g, "")}`, className: "hover:text-gold transition-colors", children: PHONE }) }),
+          /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs("a", { href: WHATSAPP_BASE, target: "_blank", rel: "noopener noreferrer", className: "hover:text-gold transition-colors", children: [
+            "WhatsApp · ",
+            PHONE
+          ] }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("div", { className: "text-xs tracking-widest uppercase text-gold mb-3", children: "Address" }),
+        /* @__PURE__ */ jsx("p", { className: "text-sm text-primary-foreground/70 leading-relaxed", children: ADDRESS })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "container-luxe mt-10 pt-6 border-t border-primary-foreground/10 flex flex-wrap items-center justify-between gap-4 text-xs text-primary-foreground/60", children: [
+      /* @__PURE__ */ jsxs("span", { children: [
+        "© ",
+        (/* @__PURE__ */ new Date()).getFullYear(),
+        " Shraddha Care Taker Nursing & Maid Services."
+      ] }),
+      /* @__PURE__ */ jsxs("span", { className: "inline-flex items-center gap-2", children: [
+        /* @__PURE__ */ jsx(Mail, { className: "h-3.5 w-3.5 text-gold" }),
+        "Made with care in Nagpur"
+      ] })
+    ] })
+  ] });
+}
+export {
+  Home as component
+};

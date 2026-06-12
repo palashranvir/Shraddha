@@ -84,6 +84,8 @@
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
   body {
     background-color: var(--color-background);
@@ -91,6 +93,9 @@
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: hidden;
   }
   h1,
   h2,
@@ -130,12 +135,18 @@
 }
 
 @utility reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: translateY(0);
   transition:
     opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
     transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
     filter 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  filter: blur(0);
+}
+
+@utility reveal-ready {
+  opacity: 0;
+  transform: translateY(28px);
   filter: blur(8px);
 }
 @utility reveal-visible {
@@ -145,14 +156,26 @@
 }
 
 @utility reveal-slide-right {
-  transform: translate3d(-34px, 18px, 0);
+  transform: none;
 }
 
 @utility reveal-slide-left {
-  transform: translate3d(34px, 18px, 0);
+  transform: none;
 }
 
 @utility reveal-scale {
+  transform: none;
+}
+
+.reveal-ready.reveal-slide-right {
+  transform: translate3d(-34px, 18px, 0);
+}
+
+.reveal-ready.reveal-slide-left {
+  transform: translate3d(34px, 18px, 0);
+}
+
+.reveal-ready.reveal-scale {
   transform: translateY(22px) scale(0.96);
 }
 
@@ -346,6 +369,15 @@
     transform: translateY(-5px);
     box-shadow: 0 24px 55px -28px rgba(0, 0, 0, 0.45);
   }
+
+  .ios-safe-top {
+    padding-top: max(0px, env(safe-area-inset-top));
+  }
+
+  .ios-safe-fab {
+    bottom: max(1.5rem, calc(1.5rem + env(safe-area-inset-bottom)));
+    right: max(1.5rem, calc(1.5rem + env(safe-area-inset-right)));
+  }
 }
 
 @keyframes aura-drift {
@@ -383,15 +415,13 @@
 }
 
 @media (max-width: 767px) {
-  .reveal {
+  .reveal-ready {
     transform: translateY(30px) scale(0.98);
   }
-
-  .reveal-slide-right {
+  .reveal-ready.reveal-slide-right {
     transform: translateY(30px) scale(0.98);
   }
-
-  .reveal-slide-left {
+  .reveal-ready.reveal-slide-left {
     transform: translateY(30px) scale(0.98);
   }
 

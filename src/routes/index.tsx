@@ -65,7 +65,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen min-h-[100svh] bg-background text-foreground">
       <Nav scrolled={scrolled} />
       <Hero />
       <Marquee />
@@ -88,7 +88,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 group"
+      className="fixed bottom-6 right-6 z-50 group ios-safe-fab"
     >
       <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-60 animate-ping" />
       <span className="relative grid place-items-center h-14 w-14 rounded-full bg-[#25D366] text-white shadow-[0_15px_40px_-10px_rgba(37,211,102,0.7)] border-2 border-white/30 transition-transform group-hover:scale-110">
@@ -108,7 +108,7 @@ function FloatingWhatsApp() {
 function Nav({ scrolled }: { scrolled: boolean }) {
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 z-50 ios-safe-top transition-all duration-500 ${
         scrolled
           ? "backdrop-blur-xl bg-background/80 border-b border-border/60 py-3"
           : "bg-transparent py-5"
@@ -143,6 +143,13 @@ function Nav({ scrolled }: { scrolled: boolean }) {
             </a>
           ))}
         </nav>
+        <a
+          href={`tel:${PHONE.replace(/\s/g, "")}`}
+          className="inline-flex md:hidden items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-3.5 py-2 text-xs border border-gold/30 hover:bg-primary/90 transition-colors"
+        >
+          <Phone className="h-3.5 w-3.5 text-gold" />
+          Call
+        </a>
         <a
           href={`tel:${PHONE.replace(/\s/g, "")}`}
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm border border-gold/30 hover:bg-primary/90 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_var(--gold)]"
@@ -698,7 +705,7 @@ function Contact() {
               name="need"
               rows={4}
               required
-              className="mt-2 w-full rounded-xl bg-background border border-input px-4 py-3 text-sm outline-none focus:border-gold transition-colors resize-none"
+              className="mt-2 w-full rounded-xl bg-background border border-input px-4 py-3 text-base sm:text-sm outline-none focus:border-gold transition-colors resize-none"
               placeholder="Tell us briefly about the requirement…"
             />
           </div>
@@ -738,7 +745,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-2 w-full rounded-xl bg-background border border-input px-4 py-3 text-sm outline-none focus:border-gold transition-colors"
+        className="mt-2 w-full rounded-xl bg-background border border-input px-4 py-3 text-base sm:text-sm outline-none focus:border-gold transition-colors"
       />
     </label>
   );
